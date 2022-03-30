@@ -1,3 +1,5 @@
 .metadata/
-Execution2
-README
+
+zipkin/zipkin.jar
+zipkin/zipkin.jar.asc
+zipkin/zipkin.jar.md5

@@ -1,5 +1,7 @@
 package com.example.manageCurrencyConversion;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -13,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ManageCurrencyConversionController {
-	
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private Environment environment;
 
@@ -44,7 +47,7 @@ public class ManageCurrencyConversionController {
 
 		ExchangeValue exchangeValue = new ExchangeValue(countryCode, conversionFactor,
 				Integer.parseInt(environment.getProperty("local.server.port")));
-		
+		logger.info("{}", exchangeValue);
 		return exchangeValue;
 	}
 	
