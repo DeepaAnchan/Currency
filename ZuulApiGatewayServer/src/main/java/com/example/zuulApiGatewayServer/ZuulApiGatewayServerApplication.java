@@ -1,15 +1,17 @@
-package com.example.limitService;
+package com.example.zuulApiGatewayServer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @SpringBootApplication
-@EnableDiscoveryClient  
-public class LimitServiceApplication {
+@EnableDiscoveryClient
+@EnableZuulProxy
+public class ZuulApiGatewayServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LimitServiceApplication.class, args);
+		SpringApplication.run(ZuulApiGatewayServerApplication.class, args);
 	}
 
 }

@@ -1,5 +1,6 @@
 package com.example.convertCurrency;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,24 +15,38 @@ public class ConvertCurrencyController {
 	private ConvertCurrencyService convertCurrencyService;
 
 
-	public Double convertCurrencyCircuitBreakerFallBack(String countryCode,Double amount) {
+	public CurrencyConversionBean convertCurrencyCircuitBreakerFallBack(String countryCode,Double amount) {
 		System.out.println("Inside the fallback method");
-		return 0.0;
+		return new CurrencyConversionBean("", "INR",0.0 , 0.0, 0.0, 0);
 	}
 	
 	@GetMapping(value = "/convertCurrency/{countryCode}/{amount}/")
 	@HystrixCommand(fallbackMethod = "convertCurrencyCircuitBreakerFallBack") 
-	public Double convertCurrency(@PathVariable String countryCode, @PathVariable Double amount) {
+	public CurrencyConversionBean convertCurrency(@PathVariable String countryCode, @PathVariable Double amount) {
 		System.out.println("Inside the convertCurrency method.");
 		Double convertedAmount = 0.0;
+		Double conversionFactor = 0.0;
+		int port = 0;
 		if (countryCode != null) {
 			System.out.println("Before call");
-			convertedAmount = amount * (convertCurrencyService.getConversionFactorAmtOfACountry(countryCode));
+			/*
+			 * Map<String, String> uriVariables = new HashMap<>();
+			 * uriVariables.put("countryCode", countryCode); ResponseEntity<ExchangeValue>
+			 * responseEntity = new RestTemplate().getForEntity(
+			 * "http://localhost:8000/manageCurrencyCoversionEntity/{countryCode}",
+			 * ExchangeValue.class, uriVariables); ExchangeValue exchangeValue =
+			 * responseEntity.getBody();
+			 */
+			ExchangeValue exchangeValue = convertCurrencyService.getConversionFactorAmtOfACountry(countryCode);
+			
+			conversionFactor = exchangeValue.getConversionFactor();
+			port = exchangeValue.getPort();
+			convertedAmount = amount * (conversionFactor);
 			System.out.println("After call");
 
 		}
 		
-		return convertedAmount;
+		return new CurrencyConversionBean(countryCode, "INR",conversionFactor , amount, convertedAmount, port);
 	}
 	
 	

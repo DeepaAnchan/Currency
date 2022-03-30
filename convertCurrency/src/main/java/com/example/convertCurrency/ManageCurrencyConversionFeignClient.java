@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 //@LoadBalancerClient(name = "manage-currency-conversion", configuration =  LoadBalancerConfiguration.class) 
 
 
-@FeignClient(name = "manage-currency-conversion") //, url = "${feign.client.url}")
+@FeignClient(name = "manage-currency-conversion")//, url = "${feign.client.url}")
 public interface ManageCurrencyConversionFeignClient {
 	
 	@GetMapping(value = "/manageCurrencyCoversionEntity/{countryCode}")
-	public Double getCFValFromManageCrncyConversionService(@PathVariable String countryCode);
+	public ExchangeValue getCFValFromManageCrncyConversionService(@PathVariable String countryCode);
 
 }

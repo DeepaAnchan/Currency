@@ -37,10 +37,15 @@ public class ManageCurrencyConversionController {
 	}
 
 	@GetMapping(value = "/manageCurrencyCoversionEntity/{countryCode}")
-	public Double getConversionFactor(@PathVariable String countryCode) {
+	public ExchangeValue getConversionFactor(@PathVariable String countryCode) {
 		System.out.println("Inside ManageCurrencyConversionController - getConversionFactor - running at port:"
 				+ Integer.parseInt(environment.getProperty("local.server.port")));
-		return manageCurrencyConversionService.getConversionFactorData(countryCode);
+		Double conversionFactor = manageCurrencyConversionService.getConversionFactorData(countryCode);
+
+		ExchangeValue exchangeValue = new ExchangeValue(countryCode, conversionFactor,
+				Integer.parseInt(environment.getProperty("local.server.port")));
+		
+		return exchangeValue;
 	}
 	
 	@PutMapping(value = "/manageCurrencyCoversionEntity")

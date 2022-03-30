@@ -5,11 +5,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ConvertCurrencyService {
-	
+
 	@Autowired
 	private ManageCurrencyConversionFeignClient manageCurrencyConversionFeignClient;
-	
-	public Double getConversionFactorAmtOfACountry(String countryCode) {
+
+	public ExchangeValue getConversionFactorAmtOfACountry(String countryCode) {
 		System.out.println("ConvertCurrencyService:  getConversionFactorAmtOfACountry method.");
 
 		return manageCurrencyConversionFeignClient.getCFValFromManageCrncyConversionService(countryCode);
