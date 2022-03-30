@@ -1,0 +1,33 @@
+# ... Deployment YAML definition
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zipkin-server-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zipkin-server-demo
+  template:
+    metadata:
+      labels:
+        app: zipkin-server-demo
+    spec:
+      containers:
+      - image: openzipkin/zipkin
+        name: zipkin-server
+        ports:
+           - containerPort: 9411
+---
+# ... Service YAML definition
+apiVersion: v1
+kind: Service
+metadata:
+  name: zipkin-server-demo
+spec:
+  ports:
+    - port: 9411
+      nodePort: 30000
+  selector:
+    app: zipkin-server-demo
+  type: NodePort
