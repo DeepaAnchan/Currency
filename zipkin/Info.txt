@@ -1,2 +1,14 @@
 curl -sSL https://zipkin.io/quickstart.sh | bash -s
 java -jar zipkin.jar
+
+C:\Users\LENOVO>cd Desktop
+
+C:\Users\LENOVO\Desktop>cd Activity
+
+C:\Users\LENOVO\Desktop\Activity>cd Workspace
+
+C:\Users\LENOVO\Desktop\Activity\Workspace>cd zipkin
+
+C:\Users\LENOVO\Desktop\Activity\Workspace\zipkin>SET RABBIT_URI=amqp://localhost
+
+C:\Users\LENOVO\Desktop\Activity\Workspace\zipkin>java -jar zipkin.jar
