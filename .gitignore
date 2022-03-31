@@ -1,1 +1,6 @@
 .metadata/
+LimitService/
+SpringCloudConfigServer/
+zipkin/zipkin.jar
+zipkin/zipkin.jar.asc
+zipkin/zipkin.jar.md5
