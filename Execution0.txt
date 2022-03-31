@@ -1,0 +1,28 @@
+Without Eureka server:
+
+
+For DB:
+http://localhost:8080/h2-console
+
+POST:
+http://localhost:8000/manageCurrencyCoversionEntity 
+{
+    "countryCode":"USD",
+    "conversionFactor":72
+}
+
+GET:
+http://localhost:8000/manageCurrencyCoversionEntity/USD
+
+
+PUT:
+http://localhost:8000/manageCurrencyCoversionEntity
+{
+    "countryCode":"USD",
+    "conversionFactor":73
+}
+
+
+GET:
+http://localhost:8001/convertCurrency/USD/10/
+
