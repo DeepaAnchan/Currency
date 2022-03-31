@@ -32,12 +32,9 @@ http://localhost:8000/h2-console
 http://localhost:8000/actuator
 
 GET 
-
-http://laptop-39qvcupj:8765/manage-currency-conversion/USD
 http://localhost:8000/manage-currency-conversion/USD
 
 POST 
-http://laptop-39qvcupj:8765/manage-currency-conversion
 http://localhost:8000/manage-currency-conversion
 {
     "countryCode":"DINAR",
@@ -46,7 +43,6 @@ http://localhost:8000/manage-currency-conversion
 
 
 PUT 
-http://laptop-39qvcupj:8765/manage-currency-conversion
 http://localhost:8000/manage-currency-conversion
 {
     "countryCode":"DINAR",
@@ -57,25 +53,23 @@ http://localhost:8000/manage-currency-conversion
 
 
 GET 
-http://laptop-39qvcupj:8765/convert-currency-service/EUR/5/
 http://localhost:8100/convert-currency-service/EUR/5/
 
-ZIPKIN: http://localhost:9411/zipkin
-RABBIT MQ: http://localhost:15672/
+kubectl create deployment manage-currency-conversion --image=deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
+kubectl expose deployment manage-currency-conversion --type=LoadBalancer --port=8000
+
+kubectl get pods
+kubectl get replicaset
+kubectl get deployment
+kubectl get service
+kubectl get all
 
 
-API Gateway:
-	http://laptop-39qvcupj:8765/{appllication-name-SEEN-IN-EUREKA-DASHBOARD}/{uri}
-	http://laptop-39qvcupj:8765/MANAGE-CURRENCY-CONVERSION/manage-currency-conversion/USD
-	http://laptop-39qvcupj:8765/CONVERT-CURRENCY-SERVICE/convert-currency-service/EUR/5/
+kubectl create deployment convert-currency --image=deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
+kubectl expose deployment convert-currency --type=LoadBalancer --port=8100
 
-
-	If spring.cloud.gateway.discovery.locator.lower-case-service-id=true then, url's changed to:
-	http://laptop-39qvcupj:8765/{appllication-name}/{uri}
-	http://laptop-39qvcupj:8765/manage-currency-conversion/manage-currency-conversion/USD
-	http://laptop-39qvcupj:8765/convert-currency-service/convert-currency-service/EUR/5/
-
-
-	http://laptop-39qvcupj:8765/manage-currency-conversion/USD
-	http://laptop-39qvcupj:8765/convert-currency-service/EUR/5/
-	
+kubectl get pods
+kubectl get replicaset
+kubectl get deployment
+kubectl get service
+kubectl get all

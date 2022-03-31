@@ -6,7 +6,7 @@ public class CurrencyConversionBean {
 	private Double conversionFactor;
 	private Double multiple;
 	private Double finalAmount;
-	private int port;
+	private String environment;
 	
 	public String getFromCountryCode() {
 		return fromCountryCode;
@@ -38,23 +38,23 @@ public class CurrencyConversionBean {
 	public void setFinalAmount(Double finalAmount) {
 		this.finalAmount = finalAmount;
 	}
-	public int getPort() {
-		return port;
-	}
 	public CurrencyConversionBean() {
 		super();
 	}
 	public CurrencyConversionBean(String fromCountryCode, String toCountryCode, Double conversionFactor, Double multiple,
-			Double finalAmount, int port) {
+			Double finalAmount, String environment) {
 		super();
 		this.fromCountryCode = fromCountryCode;
 		this.toCountryCode = toCountryCode;
 		this.conversionFactor = conversionFactor;
 		this.multiple = multiple;
 		this.finalAmount = finalAmount;
-		this.port = port;
+		this.setEnvironment(environment);
 	}
-	public void setPort(int port) {
-		this.port = port;
+	public String getEnvironment() {
+		return environment;
+	}
+	public void setEnvironment(String environment) {
+		this.environment = environment;
 	}
 }

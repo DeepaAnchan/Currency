@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>manageCurrencyConversion</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.11-SNAPSHOT</version>
 	<name>manageCurrencyConversion</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -61,7 +61,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>deancha12/manage-currency-conversion:${project.version}</name>
+						<name>deancha12/manage-currency-conversion-kubernates:${project.version}</name>
 					</image>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

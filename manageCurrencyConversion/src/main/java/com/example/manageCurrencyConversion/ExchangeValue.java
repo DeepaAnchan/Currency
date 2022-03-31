@@ -3,13 +3,13 @@ package com.example.manageCurrencyConversion;
 public class ExchangeValue {
 	private String fromCountryCode;
 	private Double conversionFactor;
-	private int port;
+	private String environment;
 	
-	public ExchangeValue(String fromCountryCode, Double conversionFactor, int port) {
+	public ExchangeValue(String fromCountryCode, Double conversionFactor, String environment) {
 		super();
 		this.fromCountryCode = fromCountryCode;
 		this.conversionFactor = conversionFactor;
-		this.port = port;
+		this.setEnvironment(environment);
 	}
 	public String getFromCountryCode() {
 		return fromCountryCode;
@@ -23,11 +23,11 @@ public class ExchangeValue {
 	public void setConversionFactor(Double conversionFactor) {
 		this.conversionFactor = conversionFactor;
 	}
-	public int getPort() {
-		return port;
+	public String getEnvironment() {
+		return environment;
 	}
-	public void setPort(int port) {
-		this.port = port;
+	public void setEnvironment(String environment) {
+		this.environment = environment;
 	}
 	
 }

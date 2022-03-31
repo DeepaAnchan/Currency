@@ -45,8 +45,12 @@ public class ManageCurrencyConversionController {
 				+ Integer.parseInt(environment.getProperty("local.server.port")));
 		Double conversionFactor = manageCurrencyConversionService.getConversionFactorData(countryCode);
 
-		ExchangeValue exchangeValue = new ExchangeValue(countryCode, conversionFactor,
-				Integer.parseInt(environment.getProperty("local.server.port")));
+		int port = Integer.parseInt(environment.getProperty("local.server.port"));
+		
+		String host = environment.getProperty("HOSTNAME");
+		String version ="v11"; //Same as the pom.xml version value
+		
+		ExchangeValue exchangeValue = new ExchangeValue(countryCode, conversionFactor,""+port +" : "+ host +" : "+ version);
 		logger.info("{}", exchangeValue);
 		return exchangeValue;
 	}

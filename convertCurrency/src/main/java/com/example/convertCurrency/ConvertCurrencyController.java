@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
-import io.github.resilience4j.retry.annotation.Retry;
 
 
 @RestController
@@ -28,7 +27,7 @@ public class ConvertCurrencyController {
 
 		Double convertedAmount = 0.0;
 		Double conversionFactor = 0.0;
-		int port = 0;
+		String env = null;
 		if (countryCode != null) {
 			logger.info("Before call");
 			/*
@@ -47,13 +46,13 @@ public class ConvertCurrencyController {
 			
 			logger.info("{}", exchangeValue);
 			conversionFactor = exchangeValue.getConversionFactor();
-			port = exchangeValue.getPort();
+			env = exchangeValue.getEnvironment();
 			convertedAmount = amount * (conversionFactor);
 			logger.info("After call");
 
 		}
 		
-		return new CurrencyConversionBean(countryCode, "INR",conversionFactor , amount, convertedAmount, port);
+		return new CurrencyConversionBean(countryCode, "INR",conversionFactor , amount, convertedAmount, env);
 	}
 
 
@@ -61,7 +60,7 @@ public class ConvertCurrencyController {
 		System.out.println("Inside the fallback method");
 		logger.info("Inside the fallback method");
 
-		return new CurrencyConversionBean("", "INR",0.0 , 0.0, 0.0, 0);
+		return new CurrencyConversionBean("", "INR",0.0 , 0.0, 0.0, "");
 	}
 	
 	
