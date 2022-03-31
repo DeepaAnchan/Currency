@@ -15,7 +15,7 @@ docker images
 docker push deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
 docker push deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
 
-#KUBERNATES COMMANDS:
+#KUBERNATES COMMANDS: STEP 1
 
 kubectl version
 
@@ -35,4 +35,64 @@ kubectl get pods
 kubectl get replicaset
 kubectl get deployment
 kubectl get service
+kubectl get all
+
+
+#TO CREATE DEPLOYMENT FILE FROM THE AVAILABLE RUNNING CONFIGURATIONS: STEP 2
+
+kubectl get deployment
+kubectl get service
+
+Note the name of both deployments and services. Will be used to get the yaml configuartions.
+
+$ cd convertCurrency/
+
+kubectl get deployment convert-currency -o yaml >> deployment.yaml
+kubectl get service convert-currency -o yaml >> service.yaml
+
+Copy the contents of service.yaml into deployment.yaml. 
+Delete service.yaml
+
+$ cd manageCurrencyConversion/
+
+kubectl get deployment manage-currency-conversion -o yaml >> deployment.yaml
+kubectl get service manage-currency-conversion -o yaml >> service.yaml
+
+Copy the contents of service.yaml into deployment.yaml. 
+Delete service.yaml
+
+In deployment.yaml of manageCurrencyConversion change replicas value to 2
+
+kubectl diff -f deployment.yaml - The difference b/w current configuartion and desired(changed) configuartion is shown.
+
+kubectl apply -f deployment.yaml  - Here, kubernates compares the desired given configuartion with the currrent configuartion. 
+									Add applies the necessary changes.
+
+Ignore the warnings
+
+kubectl get all
+
+You will notice 2 pods of manage-currency-conversion is created
+
+
+#DELETE all deployment, service, replicaset and pods
+kubectl delete all -l app=DEPLOYMENT_NAME
+
+kubectl delete all -l app=manage-currency-conversion
+
+kubectl delete all -l app=convert-currency
+
+
+#DIRECTLY CREATE DEPLOYMENT, PODS, replicaset & service using deployment.yaml: STEP 3
+
+$ cd manageCurrencyConversion/
+
+kubectl apply -f deployment.yaml
+
+kubectl get all
+
+cd convertCurrency/
+
+kubectl apply -f deployment.yaml
+
 kubectl get all
