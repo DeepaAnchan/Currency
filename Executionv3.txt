@@ -67,7 +67,7 @@ MANAGE-CURRENCY-CONVERSION: Check in EUREKA SERVER for url(localhost needs to be
 
 CONVERT-CURRENCY-SERVICE: Check in EUREKA SERVER for url
 	GET 
-	http://localhost:8100/convertCurrency/EUR/5/
+	http://localhost:8100/convert-currency-service/EUR/5/
 	http://laptop-39qvcupj:8765/convert-currency-service/EUR/5/
 
 
