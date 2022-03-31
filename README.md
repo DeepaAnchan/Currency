@@ -6,6 +6,13 @@ Execution3.txt
 
 Using docker-compose:
 	
+	IMAGE CREATION COMMANDS:  Create the images needed in docker-compose file using STS build-image command or using docker build command.
+	Docker build command:
+	docker build -t deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT . 
+	docker images 
+	docker build -t deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT .
+
+	
 	COMMANDS:
 	docker ps
 	docker ps -a
