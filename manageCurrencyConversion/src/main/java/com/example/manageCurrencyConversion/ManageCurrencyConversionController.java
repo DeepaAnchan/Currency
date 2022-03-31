@@ -23,7 +23,7 @@ public class ManageCurrencyConversionController {
 	@Autowired
 	private ManageCurrencyConversionService manageCurrencyConversionService;
 
-	@PostMapping(value = "/manageCurrencyCoversionEntity")
+	@PostMapping(value = "/manage-currency-conversion")
 	public ResponseEntity<String> addConversionFactor(
 			@RequestBody ManageCurrencyConversionEntity currencyConversionEntity) {
 		System.out.println("Inside ManageCurrencyConversionController - addConversionFactor - running at port:"
@@ -39,7 +39,7 @@ public class ManageCurrencyConversionController {
 
 	}
 
-	@GetMapping(value = "/manageCurrencyCoversionEntity/{countryCode}")
+	@GetMapping(value = "/manage-currency-conversion/{countryCode}")
 	public ExchangeValue getConversionFactor(@PathVariable String countryCode) {
 		System.out.println("Inside ManageCurrencyConversionController - getConversionFactor - running at port:"
 				+ Integer.parseInt(environment.getProperty("local.server.port")));
@@ -51,7 +51,7 @@ public class ManageCurrencyConversionController {
 		return exchangeValue;
 	}
 	
-	@PutMapping(value = "/manageCurrencyCoversionEntity")
+	@PutMapping(value = "/manage-currency-conversion")
 	public ResponseEntity<String> updateConversionFactor(
 			@RequestBody ManageCurrencyConversionEntity newCurrencyConversionEntity) {
 		System.out.println("Inside ManageCurrencyConversionController - updateConversionFactor - running at port:"

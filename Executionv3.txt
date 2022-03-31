@@ -1,0 +1,71 @@
+http://localhost:8761/
+
+http://localhost:8080/limits
+http://localhost:8081/limits
+
+POST: http://localhost:8080/actuator/refresh
+
+Spring cloud bus: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
+
+
+http://localhost:8888/limits-service/default
+
+http://localhost:8888/limits-service/dev
+
+http://localhost:8888/limits-service/qa
+
+
+
+
+http://localhost:8000/h2-console
+
+http://localhost:8000/actuator
+
+GET 
+
+http://laptop-39qvcupj:8765/manage-currency-conversion/USD
+http://localhost:8000/manage-currency-conversion/USD
+
+POST 
+http://laptop-39qvcupj:8765/manage-currency-conversion
+http://localhost:8000/manage-currency-conversion
+{
+    "countryCode":"DINAR",
+    "conversionFactor":73
+}
+
+
+PUT 
+http://laptop-39qvcupj:8765/manage-currency-conversion
+http://localhost:8000/manage-currency-conversion
+{
+    "countryCode":"DINAR",
+    "conversionFactor":73
+}
+
+
+
+
+GET 
+http://laptop-39qvcupj:8765/convert-currency-service/EUR/5/
+http://localhost:8100/convert-currency-service/EUR/5/
+
+ZIPKIN: http://localhost:9411/zipkin
+RABBIT MQ: http://localhost:15672/
+
+
+API Gateway:
+	http://laptop-39qvcupj:8765/{appllication-name-SEEN-IN-EUREKA-DASHBOARD}/{uri}
+	http://laptop-39qvcupj:8765/MANAGE-CURRENCY-CONVERSION/manage-currency-conversion/USD
+	http://laptop-39qvcupj:8765/CONVERT-CURRENCY-SERVICE/convert-currency-service/EUR/5/
+
+
+	If spring.cloud.gateway.discovery.locator.lower-case-service-id=true then, url's changed to:
+	http://laptop-39qvcupj:8765/{appllication-name}/{uri}
+	http://laptop-39qvcupj:8765/manage-currency-conversion/manage-currency-conversion/USD
+	http://laptop-39qvcupj:8765/convert-currency-service/convert-currency-service/EUR/5/
+
+
+	http://laptop-39qvcupj:8765/manage-currency-conversion/USD
+	http://laptop-39qvcupj:8765/convert-currency-service/EUR/5/
+	
