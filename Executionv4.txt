@@ -15,9 +15,7 @@ EUREKA SERVER:
 
 ZIPKIN: 
 	http://localhost:9411/zipkin
-	
-RABBIT MQ: 
-	http://localhost:15672/
+
 
 SPRING CONFIG:
 	http://localhost:8888/limits-service/default

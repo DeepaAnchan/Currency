@@ -47,7 +47,7 @@ public class ManageCurrencyConversionController {
 
 		int port = Integer.parseInt(environment.getProperty("local.server.port"));
 		
-		String host = environment.getProperty("HOSTNAME");
+		String host = environment.getProperty("HOSTNAME"); //This 'HOSTNAME' is the name of the pod in which the container lies.
 		String version ="v11"; //Same as the pom.xml version value
 		
 		ExchangeValue exchangeValue = new ExchangeValue(countryCode, conversionFactor,""+port +" : "+ host +" : "+ version);
