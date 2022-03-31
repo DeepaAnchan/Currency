@@ -97,6 +97,7 @@ docker-compose up
 		#working pods.
 		
 		kubectl get services
+		kubectl get services --watch
 		
 		#A clusterIP service can only be accessed inside a cluster. No external IP present for this service.
 		#A node IP service is also present.

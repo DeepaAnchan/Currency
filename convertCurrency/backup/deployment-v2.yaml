@@ -4,14 +4,14 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: manage-currency-conversion
-  name: manage-currency-conversion
+    app: convert-currency
+  name: convert-currency
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: manage-currency-conversion
+      app: convert-currency
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,29 +20,29 @@ spec:
   template:
     metadata:
       labels:
-        app: manage-currency-conversion
+        app: convert-currency
     spec:
       containers:
-      - image: deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
+      - image: deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
         imagePullPolicy: IfNotPresent
-        name: manage-currency-conversion-kubernates
+        name: convert-currency-service-kubernates
       restartPolicy: Always
-  
+ 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: manage-currency-conversion
-  name: manage-currency-conversion
+    app: convert-currency
+  name: convert-currency
   namespace: default
 spec:
   ports:
-  - port: 8000
+  - port: 8100
     protocol: TCP
-    targetPort: 8000
+    targetPort: 8100
   selector:
-    app: manage-currency-conversion
+    app: convert-currency
   sessionAffinity: None
   type: LoadBalancer
-
+  

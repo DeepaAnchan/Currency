@@ -111,3 +111,11 @@ cd convertCurrency/
 kubectl apply -f deployment.yaml
 
 kubectl get all
+
+
+#Get logs of a pod
+kubectl get pods
+
+kubectl logs  pod/convert-currency-7fc8895b95-jsdqc
+
+kubectl logs  -f pod/convert-currency-7fc8895b95-jsdqc
