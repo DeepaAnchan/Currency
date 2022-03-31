@@ -5,6 +5,8 @@ For local system:
 Execution3.txt
 
 Using docker-compose:
+	
+	COMMANDS:
 	docker ps
 	docker ps -a
 	docker rm CONTAINER_ID
