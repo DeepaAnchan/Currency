@@ -56,7 +56,7 @@ docker-compose up
 		kubectl get rs -o wide
 
 		#Used to create 'n' no. of replicaset
-		kubectl scale deployment hello-world-rest-api --replicaset=3
+		kubectl scale deployment hello-world-rest-api --replicas=3
 		kubectl get pods
 		kubectl get replicaset
 		kubectl get events
