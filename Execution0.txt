@@ -1,5 +1,6 @@
-Without Eureka server:
+Without Eureka server and Zipkin:
 
+Remove zipkin & eureka dependencies from pom.xml & their corresponding configurations from both manageCurrencyCoversion and convertCurrency services.
 
 For DB:
 http://localhost:8080/h2-console
