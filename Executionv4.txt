@@ -1,28 +1,39 @@
-ZIPKIN: 9411
-RABBIT MQ: 15672
-EUREKA: 8761
-GATEWAY: 8765
 LIMITS: 8080, 8081
 CONFIG: 8888
+
+EUREKA: 8761
+ZIPKIN: 9411
+RABBIT MQ: 15672
+GATEWAY: 8765
 CONVERT-CURRENCY-SERVICE: 8100
 MANAGE-CURRENCY-CONVERSION: 8000
 
 
-http://localhost:8761/
-
-http://localhost:8080/limits
-http://localhost:8081/limits
-
-POST: http://localhost:8080/actuator/refresh
-
-Spring cloud bus: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
+EUREKA SERVER:
+	http://localhost:8761/
 
 
-http://localhost:8888/limits-service/default
+ZIPKIN: 
+	http://localhost:9411/zipkin
+	
+RABBIT MQ: 
+	http://localhost:15672/
 
-http://localhost:8888/limits-service/dev
+SPRING CONFIG:
+	http://localhost:8888/limits-service/default
 
-http://localhost:8888/limits-service/qa
+	http://localhost:8888/limits-service/dev
+
+	http://localhost:8888/limits-service/qa
+
+
+LIMITS:
+	http://localhost:8080/limits
+	http://localhost:8081/limits
+
+	In postMan:	POST: http://localhost:8080/actuator/refresh
+
+	In postMan: Spring cloud bus dependency is added: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
 
 
 
@@ -50,26 +61,5 @@ http://localhost:8000/manage-currency-conversion
 }
 
 
-
-
 GET 
 http://localhost:8100/convert-currency-service/EUR/5/
-
-kubectl create deployment manage-currency-conversion --image=deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
-kubectl expose deployment manage-currency-conversion --type=LoadBalancer --port=8000
-
-kubectl get pods
-kubectl get replicaset
-kubectl get deployment
-kubectl get service
-kubectl get all
-
-
-kubectl create deployment convert-currency --image=deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
-kubectl expose deployment convert-currency --type=LoadBalancer --port=8100
-
-kubectl get pods
-kubectl get replicaset
-kubectl get deployment
-kubectl get service
-kubectl get all
