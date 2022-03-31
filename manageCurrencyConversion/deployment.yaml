@@ -8,7 +8,7 @@ metadata:
   name: manage-currency-conversion
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: manage-currency-conversion
@@ -45,4 +45,5 @@ spec:
     app: manage-currency-conversion
   sessionAffinity: None
   type: LoadBalancer
+
 
