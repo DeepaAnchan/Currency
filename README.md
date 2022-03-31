@@ -6,13 +6,17 @@ Create the images needed in docker-compose file using STS build-image command or
 #Docker BUILD COMMAND:
 
 docker build -t deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT .
+
 docker images
+
 docker build -t deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT .
+
 docker images
 
 #DOCKER IMAGE PUSH TO REGISTER HUB COMMAND:
 
 docker push deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
+
 docker push deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
 
 #KUBERNATES COMMANDS: STEP 1
@@ -20,27 +24,38 @@ docker push deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
 kubectl version
 
 kubectl create deployment manage-currency-conversion --image=deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
+
 kubectl expose deployment manage-currency-conversion --type=LoadBalancer --port=8000
 
 kubectl get pods
+
 kubectl get replicaset
+
 kubectl get deployment
+
 kubectl get service
+
 kubectl get all
 
 kubectl create deployment convert-currency --image=deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
+
 kubectl expose deployment convert-currency --type=LoadBalancer --port=8100
 
 kubectl get pods
+
 kubectl get replicaset
+
 kubectl get deployment
+
 kubectl get service
+
 kubectl get all
 
 
 #TO CREATE DEPLOYMENT FILE FROM THE AVAILABLE RUNNING CONFIGURATIONS: STEP 2
 
 kubectl get deployment
+
 kubectl get service
 
 Note the name of both deployments and services. Will be used to get the yaml configuartions.
@@ -48,18 +63,18 @@ Note the name of both deployments and services. Will be used to get the yaml con
 $ cd convertCurrency/
 
 kubectl get deployment convert-currency -o yaml >> deployment.yaml
+
 kubectl get service convert-currency -o yaml >> service.yaml
 
-Copy the contents of service.yaml into deployment.yaml. 
-Delete service.yaml
+Copy the contents of service.yaml into deployment.yaml. Delete service.yaml
 
 $ cd manageCurrencyConversion/
 
 kubectl get deployment manage-currency-conversion -o yaml >> deployment.yaml
+
 kubectl get service manage-currency-conversion -o yaml >> service.yaml
 
-Copy the contents of service.yaml into deployment.yaml. 
-Delete service.yaml
+Copy the contents of service.yaml into deployment.yaml. Delete service.yaml
 
 In deployment.yaml of manageCurrencyConversion change replicas value to 2
 
