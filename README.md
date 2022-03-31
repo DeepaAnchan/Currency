@@ -119,3 +119,15 @@ kubectl get pods
 kubectl logs  pod/convert-currency-7fc8895b95-jsdqc
 
 kubectl logs  -f pod/convert-currency-7fc8895b95-jsdqc
+
+#ConfigMap
+kubectl get configmap
+
+kubectl create configmap currency-conversion --from-literal=MANAGE-CURRENCY-CONVERSION_URI=http://manage-currency-conversion
+
+kubectl get configmap currency-conversion -o yaml
+
+kubectl get configmap currency-conversion -o yaml >>  configmap.yaml
+
+Copy the contents of configmap.yaml into deployment.yaml. Delete configmap.yaml
+
