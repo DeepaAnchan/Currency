@@ -19,6 +19,9 @@ docker push deancha12/manage-currency-conversion-kubernates:0.0.11-SNAPSHOT
 
 docker push deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
 
+#If deployment.yml is already created:
+kubectl apply -f deployment.yaml
+
 #KUBERNATES COMMANDS: STEP 1
 
 kubectl version
