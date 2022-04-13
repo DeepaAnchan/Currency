@@ -59,6 +59,8 @@ http://localhost:8100/convert-currency-service/EUR/5/
 
 Start RabbitMq for Spring cloud bus usage.
 
+Rabbit Mq:http://localhost:15672/
+
 EUREKA SERVER:
 	http://localhost:8761/
 
