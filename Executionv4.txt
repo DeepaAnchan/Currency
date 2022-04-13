@@ -1,3 +1,14 @@
+kubectl apply -f deployment.yaml
+kubectl get all
+
+kubectl scale deployment manage-currency-conversion --replicas=2
+
+kubectl delete all -l app=manage-currency-conversion
+kubectl delete all -l app=convert-currency
+kubectl delete all -l app=zipkin-server
+
+-------------------------------------------------------------------------------------------------
+
 LIMITS: 8080, 8081
 CONFIG: 8888
 
@@ -8,33 +19,10 @@ GATEWAY: 8765
 CONVERT-CURRENCY-SERVICE: 8100
 MANAGE-CURRENCY-CONVERSION: 8000
 
-
-EUREKA SERVER:
-	http://localhost:8761/
-
+-------------------------------------------------------------------------------------------------
 
 ZIPKIN: 
 	http://localhost:9411/zipkin
-
-
-SPRING CONFIG:
-	http://localhost:8888/limits-service/default
-
-	http://localhost:8888/limits-service/dev
-
-	http://localhost:8888/limits-service/qa
-
-
-LIMITS:
-	http://localhost:8080/limits
-	http://localhost:8081/limits
-
-	In postMan:	POST: http://localhost:8080/actuator/refresh
-
-	In postMan: Spring cloud bus dependency is added: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
-
-
-
 
 http://localhost:8000/h2-console
 
@@ -61,3 +49,32 @@ http://localhost:8000/manage-currency-conversion
 
 GET 
 http://localhost:8100/convert-currency-service/EUR/5/
+
+
+
+
+-----------------------------------------------------------------------------
+
+EUREKA SERVER:
+	http://localhost:8761/
+
+
+
+SPRING CONFIG:
+	http://localhost:8888/limits-service/default
+
+	http://localhost:8888/limits-service/dev
+
+	http://localhost:8888/limits-service/qa
+
+
+LIMITS:
+	http://localhost:8080/limits
+	http://localhost:8081/limits
+
+	In postMan:	POST: http://localhost:8080/actuator/refresh
+
+	In postMan: Spring cloud bus dependency is added: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
+
+
+
