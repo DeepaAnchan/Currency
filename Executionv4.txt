@@ -23,6 +23,8 @@ MANAGE-CURRENCY-CONVERSION: 8000
 
 ZIPKIN: 
 	http://localhost:9411/zipkin
+	
+	
 
 http://localhost:8000/h2-console
 
@@ -55,6 +57,8 @@ http://localhost:8100/convert-currency-service/EUR/5/
 
 -----------------------------------------------------------------------------
 
+Start RabbitMq for Spring cloud bus usage.
+
 EUREKA SERVER:
 	http://localhost:8761/
 
@@ -72,9 +76,15 @@ LIMITS:
 	http://localhost:8080/limits
 	http://localhost:8081/limits
 
-	In postMan:	POST: http://localhost:8080/actuator/refresh
+When 2 copies of limit service is up & running. If the value of properties in git chnages then, 
+	
+	When Spring cloud bus dependency is not added, the following api call needs to be done for both copies of limits service to 
+	get the changed values.
+	In postMan:		:POST: http://localhost:8080/actuator/refresh  & POST: http://localhost:8081/actuator/refresh 
 
-	In postMan: Spring cloud bus dependency is added: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
+	When Spring cloud bus dependency is added: the following api call needs to be done only once to 
+	get the changed values in both the copies.
+	In postMan: Start Rabbit MQ: POST: http://localhost:8080/actuator/busrefresh
 
 
 
