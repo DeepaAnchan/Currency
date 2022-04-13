@@ -23,9 +23,12 @@ spec:
         app: convert-currency
     spec:
       containers:
-      - image: deancha12/convert-currency-service-kubernates:0.0.11-SNAPSHOT
+      - image: deancha12/convert-currency-service-kubernates:0.0.12-SNAPSHOT
         imagePullPolicy: IfNotPresent
-        name: convert-currency-service-kubernates 
+        name: convert-currency-service-kubernates
+        env:
+          - name: SPRING_ZIPKIN_BASE-URL
+            value: http://zipkin-server.default.svc.cluster.local:9411 
         envFrom:
           - configMapRef:
               name: convert-currency

@@ -54,6 +54,9 @@ kubectl get service
 
 kubectl get all
 
+kubectl scale deployment manage-currency-conversion --replicas=2
+
+
 
 #TO CREATE DEPLOYMENT FILE FROM THE AVAILABLE RUNNING CONFIGURATIONS: STEP 2
 
