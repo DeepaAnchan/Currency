@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: zipkin-server-demo
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -15,9 +16,8 @@ spec:
     spec:
       containers:
       - image: openzipkin/zipkin
+        imagePullPolicy: IfNotPresent
         name: zipkin-server
-        ports:
-           - containerPort: 9411
 ---
 # ... Service YAML definition
 apiVersion: v1
@@ -27,7 +27,8 @@ metadata:
 spec:
   ports:
     - port: 9411
-      nodePort: 30000
+      protocol: TCP
+      targetPort: 9411
   selector:
     app: zipkin-server-demo
-  type: NodePort
+  type: LoadBalancer
