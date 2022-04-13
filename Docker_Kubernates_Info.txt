@@ -17,6 +17,8 @@ docker-compose up
 	#Expose deployment to the outside world-rest-api as a load balancer on port 8080 - Creates a service
 	kubectl expose deployment hello-world-rest-api --type=LoadBalancer --port=8080
 
+	kubectl get deployment hello-world-rest-api -o yaml >> deployment.yaml
+
 	#To get all 
 	kubectl get all
 
